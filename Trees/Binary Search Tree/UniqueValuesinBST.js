@@ -26,7 +26,7 @@ const findMaxUniquePathInBST = (node, path) => {
   }
 
   /** 2.  ONCE WE KNOW THAT WE CAN KEEP GOING, WE TAKE CARE OF THIS NODE FIRST */
-  path.add(node.value);   // We add this node to the current path
+  path.add(node.value); // We add this node to the current path
   if (path.size > maxPath.length) {
     // If the current path is bigger than the max, we copy it to the max
     resetMaxPath(path);
@@ -38,43 +38,75 @@ const findMaxUniquePathInBST = (node, path) => {
 
   /** 4.  THIS PART IS NEW; WE CLEAN UP AFTER OURSELVES BEFORE OUR PARENTS GET HOME! */
   path.delete(node.value);
-}
+};
 
 /** THIS IS JUST A LITTLE HELPER FUNCTION TO COPY THE CURRENT PATH TO THE MAX PATH */
-const resetMaxPath = (path) => {
+const resetMaxPath = path => {
   maxPath = [];
   for (let value of path.values()) {
     maxPath.push(value);
   }
 };
 
-
 // ========= TEST CODE
 const testTree = {
   value: 16,
-  left : {
+  left: {
     value: 10,
     left: {
-      value: 8
+      value: 8,
     },
     right: {
-      value: 11
-    }
+      value: 11,
+    },
   },
   right: {
     value: 18,
     left: {
-      value: 16
+      value: 16,
     },
     right: {
-      value: 19
-    }
-  }
+      value: 19,
+    },
+  },
 };
 
 findMaxUniquePathInBST(testTree, new Set());
 console.log(maxPath);
 
-
 //REINA TRIES
 
+const findUniqueValuesinBST = root => {
+  let path = new Set();
+  let maxPath = [];
+  findUniqueValuesinBST(root, path, maxPath);
+  return maxPath;
+};
+
+const findUniqueValuesinBST = (root, path, maxPath) => {
+  if (path.has(root.value)) {
+    return;
+  }
+
+  if (!root) {
+    return;
+  }
+
+  path.add(root.value);
+
+  if (path.size() > maxPath.length) {
+    newPath(path);
+  }
+
+  findUniqueValuesinBST(root.left, path, maxPath);
+  findUniqueValuesinBST(root.right, path, maxPath);
+
+  path.delete(root.value);
+};
+
+function newPath(path) {
+  let newPath = [];
+  for (let node of path.values()) {
+    newPath.push(node);
+  }
+}
