@@ -35,7 +35,7 @@ const findMaxUniquePathInBST = (node, path) => {
   /** 3.  NOW THAT THIS NODE IS DONE, WE RECURSE TO EACH OF OUR CHILDREN */
   findMaxUniquePathInBST(node.left, path);
   findMaxUniquePathInBST(node.right, path);
-  
+
   /** 4.  THIS PART IS NEW; WE CLEAN UP AFTER OURSELVES BEFORE OUR PARENTS GET HOME! */
   path.delete(node.value);
 }
@@ -74,3 +74,7 @@ const testTree = {
 
 findMaxUniquePathInBST(testTree, new Set());
 console.log(maxPath);
+
+
+//REINA TRIES
+
