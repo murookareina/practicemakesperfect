@@ -3,12 +3,13 @@ Breadth First Search
 
 Example input Tree:
 
-        A
+         A
        /  \
       B    C
     / \   /  \
    D   E  F   G
-    */
+
+*/
 
 const bfs = root => {
   let queue = [root];
