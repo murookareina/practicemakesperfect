@@ -16,30 +16,28 @@ Postorder = Left, Right, Root => 4, 5, 2, 3, 1
 
 */
 
-const inOrderTraversal = root => {
-  let nodes = [];
+
+const inOrderTraversal = (root, result = []) => {
   if (root) {
     inOrderTraversal(root.left);
-    nodes.push(root);
+    result.push(root);
     inOrderTraversal(root.right);
   }
   return nodes;
 };
 
-const preOrderTraversal = root => {
-  let nodes = [];
+const preOrderTraversal = (root, result = []) => {
   if (root) {
-    nodes.push(root);
+    result.push(root);
     preOrderTraversal(root.left);
     preOrderTraversal(root.right);
   }
 };
 
-const postOrderTraversal = root => {
-  let nodes = [];
+const postOrderTraversal = (root, result = []) => {
   if (root) {
     postOrderTraversal(root.left);
     postOrderTraversal(root.right);
-    nodes.push(root);
+    result.push(root);
   }
 };
