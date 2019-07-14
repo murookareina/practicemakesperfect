@@ -36,7 +36,7 @@ function logAllCoinFlipSequences(numberOfFlipsLeft, flipsDoneSoFar) {
 function logAllCustomSequences(numberLeft, doneSoFar, possibiliities) {
 	if (numberLeft === 0) {
 		console.log(doneSoFar);
-  	return;
+		return;
 	}
 
 	// So instead of typing it out twice for each side, we can tighten this up with a loop
@@ -55,7 +55,7 @@ console.log("======== BINARY TIME!! ============");
 logAllCustomSequences(5, [], ['0', '1']);
 
 
-// OK cool, so now for the cool part.  Now that we've converted our function to loop through all 
+// OK cool, so now for the fun part.  Now that we've converted our function to loop through all 
 // of the (2) possibiliities of a coin flip, which are stored in an array, what's stopping us from
 // simply making that array of possibilities bigger for things like dice??
 
@@ -70,12 +70,10 @@ logAllCustomSequences(3, [], [1, 2, 3, 4, 5, 6]);  // 3 rolls of a die  :)
 // Now this relatively simple function can literally enumerate all permutations for any repeatable
 // event:  coin flips, dice rolls, picking a number from 1 to 10, etc.
 
-// It also works for doing silly things like trying to ATM pins...
-console.log("== AH OK, SO THIS IS WHY THE LOCK MY ACCOUNT AFTER 3 FAILED ATTEMPTS... ==");
+// It also works for doing silly/illegal things like trying to crack ATM pins...
+console.log("== AH OK, SO THIS IS WHY THEY LOCK MY ACCOUNT AFTER 3 FAILED ATTEMPTS... ==");
 logAllCustomSequences(4, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-// Or for all possible sequences of notes on a violin...
-console.log("==== ONE OF THESE IS BOUND TO BE OK, I GUESS... ====");
+// Or for playing all possible 4-note sequences on a violin...
+console.log("==== ONE OF THESE IS BOUND TO NOT SOUND HORRIBLE, I GUESS... ====");
 logAllCustomSequences(4, [], ['A', 'B', 'C', 'D', 'E', 'F', 'G']);
-
-
