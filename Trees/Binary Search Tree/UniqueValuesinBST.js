@@ -79,34 +79,37 @@ console.log(maxPath);
 const findUniqueValuesinBST = root => {
   let path = new Set();
   let maxPath = [];
-  findUniqueValuesinBST(root, path, maxPath);
+  findUniqueValues(root, path, maxPath);
   return maxPath;
 };
 
-const findUniqueValuesinBST = (root, path, maxPath) => {
-  if (path.has(root.value)) {
+const findUniqueValues = (root, path, maxPath) => {
+  if (!root) {
     return;
   }
 
-  if (!root) {
+  if (path.has(root.value)) {
     return;
   }
 
   path.add(root.value);
 
-  if (path.size() > maxPath.length) {
+  if (path.size > maxPath.length) {
     newPath(path);
   }
 
-  findUniqueValuesinBST(root.left, path, maxPath);
-  findUniqueValuesinBST(root.right, path, maxPath);
+  findUniqueValues(root.left, path, maxPath);
+  findUniqueValues(root.right, path, maxPath);
 
   path.delete(root.value);
 };
 
 function newPath(path) {
-  let newPath = [];
+  maxPath = [];
   for (let node of path.values()) {
-    newPath.push(node);
+    maxPath.push(node);
   }
 }
+
+findUniqueValuesinBST(testTree);
+console.log(maxPath);
