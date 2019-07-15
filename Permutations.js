@@ -14,12 +14,12 @@ function logAllCoinFlipSequences(numberOfFlipsLeft, flipsDoneSoFar) {
   // 2.  WE'RE NOT DONE, SO WE "KICK-OFF" OUR CHILDREN BY TRYING BOTH SIDES OF THE COIN
   // First we try heads and recurse...
   flipsDoneSoFar.push('H');
-  logAllCoinFlipSequences(numberOfFlipsLeft-1, flipsDoneSoFar);
+  logAllCoinFlipSequences(numberOfFlipsLeft - 1, flipsDoneSoFar);
   flipsDoneSoFar.pop();
-  
+
   // Next we try tails and recurse...
   flipsDoneSoFar.push('T');
-  logAllCoinFlipSequences(numberOfFlipsLeft-1, flipsDoneSoFar);
+  logAllCoinFlipSequences(numberOfFlipsLeft - 1, flipsDoneSoFar);
   flipsDoneSoFar.pop();
 }
 
@@ -34,46 +34,48 @@ function logAllCoinFlipSequences(numberOfFlipsLeft, flipsDoneSoFar) {
 // The point is that our function doesn't really care what we call the sides, so why hard code it?
 
 function logAllCustomSequences(numberLeft, doneSoFar, possibiliities) {
-	if (numberLeft === 0) {
-		console.log(doneSoFar);
-		return;
-	}
+  if (numberLeft === 0) {
+    console.log(doneSoFar);
+    return;
+  }
 
-	// So instead of typing it out twice for each side, we can tighten this up with a loop
-	for (let possibility of possibiliities) {
-		doneSoFar.push(possibility);
-	 	logAllCustomSequences(numberLeft-1, doneSoFar, possibiliities);
-	 	doneSoFar.pop();
-	}
+  // So instead of typing it out twice for each side, we can tighten this up with a loop
+  for (let possibility of possibiliities) {
+    doneSoFar.push(possibility);
+    logAllCustomSequences(numberLeft - 1, doneSoFar, possibiliities);
+    doneSoFar.pop();
+  }
 }
 
 // Not bad, right?  Let's see if it works (this is when you're supposed to run it yourself)!
 logAllCustomSequences(5, [], ['H', 'T']);
 
 // OK, it worked like a charm, and for all sorts of side names...
-console.log("======== BINARY TIME!! ============");
+console.log('======== BINARY TIME!! ============');
 logAllCustomSequences(5, [], ['0', '1']);
 
-
-// OK cool, so now for the fun part.  Now that we've converted our function to loop through all 
+// OK cool, so now for the fun part.  Now that we've converted our function to loop through all
 // of the (2) possibiliities of a coin flip, which are stored in an array, what's stopping us from
 // simply making that array of possibilities bigger for things like dice??
 
 // The answer is..........
 
 // NOTHING!
-console.log("=========== DICE???!! WHHHHAAAAAATTTT???? ============");
-logAllCustomSequences(3, [], [1, 2, 3, 4, 5, 6]);  // 3 rolls of a die  :)
-
+console.log('=========== DICE???!! WHHHHAAAAAATTTT???? ============');
+logAllCustomSequences(3, [], [1, 2, 3, 4, 5, 6]); // 3 rolls of a die  :)
 
 // So yeah, that's why I dropped all coin-related terminology from the logAllCustomSequences function.
 // Now this relatively simple function can literally enumerate all permutations for any repeatable
 // event:  coin flips, dice rolls, picking a number from 1 to 10, etc.
 
 // It also works for doing silly/illegal things like trying to crack ATM pins...
-console.log("== AH OK, SO THIS IS WHY THEY LOCK MY ACCOUNT AFTER 3 FAILED ATTEMPTS... ==");
+console.log(
+  '== AH OK, SO THIS IS WHY THEY LOCK MY ACCOUNT AFTER 3 FAILED ATTEMPTS... =='
+);
 logAllCustomSequences(4, [], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 // Or for playing all possible 4-note sequences on a violin...
-console.log("==== ONE OF THESE IS BOUND TO NOT SOUND HORRIBLE, I GUESS... ====");
+console.log(
+  '==== ONE OF THESE IS BOUND TO NOT SOUND HORRIBLE, I GUESS... ===='
+);
 logAllCustomSequences(4, [], ['A', 'B', 'C', 'D', 'E', 'F', 'G']);
